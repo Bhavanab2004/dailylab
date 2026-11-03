@@ -1,0 +1,84 @@
+mkdir Program-6
+cd Program-6
+
+index.js
+
+const express = require('express');
+
+const app = express();
+
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Hello from Program 6 - Docker Hub!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+package.json
+
+{
+  "name": "program-6",
+  "version": "1.0.0",
+  "description": "Automated build pipeline using Docker Hub",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+Dockerfile
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]
+
+.dockerignore
+
+node_modules
+.git
+.env
+
+.gitignore
+
+node_modules/
+.env
+
+npm install
+docker build -t program-6 .
+docker repo
+bhavanab2004/program-6
+docker tag program-6 bhavanab2004/program-6:latest
+docker login -u bhavanab2004
+docker push bhavanab2004/program-6:latest
+https://github.com/Bhavanab2004/program-6
+docker tag program-6 ghcr.io/bhavanab2004/program-6:latest
+docker login ghcr.io -u Bhavanab2004
+docker push ghcr.io/bhavanab2004/program-6:latest
+git init
+git branch -M main
+git config --global user.name "Bhavanab2004"
+git remote add origin https://github.com/Bhavanab2004/program-6.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+git remote set-url origin https://github.com/Bhavanab2004/program-6.git
+git push -u origin main
+docker pull bhavanab2004/program-6:latest
+docker run -d -p 3000:3000 --name program6-test bhavanab2004/program-6:latest
+
